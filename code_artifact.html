@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鄒依珊 Tsou Yi-Shan | 個人介紹與作品集</title>
+    <!-- Google Fonts: 引入 Noto Sans TC 與 Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'warm-bg': '#f5f2eb',
+                        'warm-card': '#fdfcf7',
+                        'warm-dark': '#222222',
+                        'warm-accent': '#8c7051',
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', '"Outfit"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 日系溫潤米色 + 白色等高線背景紋理 (增強等高線對比度與流暢度) */
+        body {
+            background-color: #f5f2eb;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'%3E%3Cpath fill='none' stroke='rgba(255, 255, 255, 0.65)' stroke-width='2' d='M-100 200 C100 100 300 300 500 200 C700 100 900 300 1000 200 M-100 350 C150 250 250 450 550 320 C750 200 850 400 1000 350 M-100 500 C200 400 350 600 600 480 C800 380 900 550 1000 500 M-100 650 C100 550 400 700 650 620 C850 520 950 680 1000 650 M-100 50 C200 -50 400 150 600 50 C800 -50 900 100 1000 50'/%3E%3Cpath fill='none' stroke='rgba(255, 255, 255, 0.4)' stroke-width='1.5' d='M-100 120 C120 40 280 220 480 120 C680 200 880 220 1000 120 M-100 280 C180 180 320 380 580 260 C780 160 880 320 1000 280 M-100 420 C120 320 380 520 620 400 C820 300 880 480 1000 420'/%3E%3C/svg%3E");
+            background-attachment: fixed;
+            color: #222222;
+        }
+
+        /* 3D 翻轉卡片 CSS */
+        .flip-card {
+            background-color: transparent;
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner,
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* 按鈕 hover 質感微動效 */
+        .btn-black {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            transition: all 0.25s ease;
+        }
+        .btn-black:hover {
+            background-color: #333333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body class="min-h-screen py-6 sm:py-12 px-4 flex justify-center items-center">
+
+    <main class="max-w-2xl w-full bg-[#faf8f5]/90 backdrop-blur-md rounded-3xl shadow-xl border border-white/60 overflow-hidden my-auto">
+        
+        <!-- 全幅背景圖 (Hero Banner) 可隨時替換 url -->
+        <div class="relative h-48 sm:h-56 w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80');">
+            <!-- 漸層遮罩 -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#faf8f5]"></div>
+        </div>
+
+        <div class="px-6 sm:px-10 pb-8 -mt-20 relative z-10 text-center">
+            <!-- 圓形大頭照 (更換為最新的形象照) -->
+            <div class="inline-block relative">
+                <img class="w-32 h-32 sm:w-36 sm:h-36 rounded-full object-cover border-4 border-white shadow-md mx-auto bg-stone-200" 
+                     src="2026形象照4_2.png" 
+                     alt="鄒依珊 Tsou Yi-Shan" 
+                     onerror="this.src='https://placehold.co/160x160/8c7051/ffffff?text=Yi-Shan'">
+            </div>
+
+            <!-- 姓名與頭銜 -->
+            <h1 class="text-2xl sm:text-3xl font-bold text-stone-800 tracking-wide mt-3">鄒依珊 Tsou Yi-Shan</h1>
+            <p class="text-xs sm:text-sm font-semibold text-stone-600 tracking-wider mt-1 uppercase">
+                Brand & Creative | 設計 x 運動 × 行銷 × AI x 旅遊
+            </p>
+
+            <!-- 社群連結按鈕列 (一致黑色風格、縮小Icon) -->
+            <div class="flex items-center justify-center gap-3 mt-4">
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/913design/" target="_blank" title="LinkedIn"
+                   class="w-9 h-9 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-700 transition-all hover:-translate-y-0.5 shadow-sm">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.72a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26Z"/>
+                    </svg>
+                </a>
+                <!-- Instagram -->
+                <a href="#" target="_blank" title="Instagram"
+                   class="w-9 h-9 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-700 transition-all hover:-translate-y-0.5 shadow-sm">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <!-- Facebook -->
+                <a href="#" target="_blank" title="Facebook"
+                   class="w-9 h-9 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-700 transition-all hover:-translate-y-0.5 shadow-sm">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <!-- Line -->
+                <a href="#" target="_blank" title="LINE"
+                   class="w-9 h-9 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-700 transition-all hover:-translate-y-0.5 shadow-sm">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M19.34 10.03c0-4.22-4.19-7.65-9.34-7.65S0 5.81 0 10.03c0 3.78 3.32 6.95 7.8 7.53.3.07.72.21.82.48.1.25.06.63.03.88l-.13.79c-.04.25-.19.98.86.53 1.05-.45 5.67-3.34 7.74-5.71 1.48-1.55 2.22-3.02 2.22-4.5rem-12.7 1.55h-1.57c-.22 0-.4-.18-.4-.4V8.4c0-.22.18-.4.4-.4h1.57c.22 0 .4.18.4.4v3.18c0 .22-.18.4-.4.4zm3.17 0h-1.57c-.22 0-.4-.18-.4-.4V8.4c0-.22.18-.4.4-.4h1.57c.22 0 .4.18.4.4v3.18c0 .22-.18.4-.4.4z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- 精簡簡介 (無背景色) -->
+            <p class="mt-6 text-sm sm:text-base text-stone-700 leading-relaxed max-w-xl mx-auto text-justify sm:text-center font-normal">
+                具備 GARMIN 亞太區域品牌管理、消費電子產品開發與戶外帶團經歷。擅長亞洲市場品牌一致性、設計團隊管理與電商視覺。透過登山、登山車與長途旅行的參與，洞察戶外消費者需求，結合邏輯與獨立思考，打造具質感的品牌與產品體驗。
+            </p>
+
+            <!-- 主要互動按鈕區 (Email 聯絡 & 下載 CV) -->
+            <div class="mt-6 flex justify-center gap-3">
+                <a href="mailto:rankin.tsou@gmail.com" class="btn-black text-xs sm:text-sm font-medium px-6 py-3 rounded-full flex items-center gap-2">
+                    <svg class="w-4 h-4 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
+                        <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    Email 聯絡
+                </a>
+                <a href="SUPACAZ_Creative_Director_Brand_Manager_CV_繁體中文.docx" download class="btn-black text-xs sm:text-sm font-medium px-6 py-3 rounded-full flex items-center gap-2">
+                    <svg class="w-4 h-4 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
+                        <path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    下載我的 CV
+                </a>
+            </div>
+
+            <hr class="border-stone-200/80 my-8">
+
+            <!-- 工作經歷 -->
+            <section class="text-left mb-8">
+                <h2 class="text-base sm:text-lg font-bold text-stone-800 mb-4 flex items-center gap-2">
+                    <span class="w-1.5 h-4 bg-stone-800 rounded-full inline-block"></span>
+                    工作經歷 (Work Experience)
+                </h2>
+                <div class="space-y-4 text-xs sm:text-sm">
+                    <!-- Garmin -->
+                    <div class="border-l-2 border-stone-300 pl-4 py-0.5">
+                        <div class="flex justify-between items-baseline flex-wrap">
+                            <h3 class="font-bold text-stone-800">GARMIN — 行銷設計管理師</h3>
+                            <span class="text-stone-600 text-xs">亞太區域品牌管理</span>
+                        </div>
+                        <p class="text-stone-600 mt-1">落實亞洲市場品牌規範一致性，建立與管理外部設計師團隊，串連電商與實體視覺需求。</p>
+                    </div>
+
+                    <!-- Bungbungame -->
+                    <div class="border-l-2 border-stone-300 pl-4 py-0.5">
+                        <div class="flex justify-between items-baseline flex-wrap">
+                            <h3 class="font-bold text-stone-800">Bungbungame — 產品專案經理</h3>
+                            <span class="text-stone-600 text-xs">消費電子產品開發</span>
+                        </div>
+                        <p class="text-stone-600 mt-1">參與手機與電子產品外觀設計、供應商協作、原型開發與軟硬體整合。</p>
+                    </div>
+
+                    <!-- 海峽數碼 -->
+                    <div class="border-l-2 border-stone-300 pl-4 py-0.5">
+                        <div class="flex justify-between items-baseline flex-wrap">
+                            <h3 class="font-bold text-stone-800">海峽數碼 — 產品設計師</h3>
+                            <span class="text-stone-600 text-xs">工業設計與品牌規劃</span>
+                        </div>
+                        <p class="text-stone-600 mt-1">負責 Apple/Android 週邊產品 ODM 設計、自有品牌 OEO Design 從無到有之品牌識別與展場規劃 (CES/Computex)。</p>
+                    </div>
+
+                    <!-- 導遊領隊自由接案 -->
+                    <div class="border-l-2 border-stone-300 pl-4 py-0.5">
+                        <div class="flex justify-between items-baseline flex-wrap">
+                            <h3 class="font-bold text-stone-800">獨立專案 & 戶外領隊 — 登山嚮導 / 數位專案</h3>
+                            <span class="text-stone-600 text-xs">戶外與 AI 流程</span>
+                        </div>
+                        <p class="text-stone-600 mt-1">帶領高山縱走與旅行團體，探索 Trip Match 數位系統、Looker Studio 資料整理與 AI 工作流輔助。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 學歷與專業證照 -->
+            <section class="text-left mb-8">
+                <h2 class="text-base sm:text-lg font-bold text-stone-800 mb-3 flex items-center gap-2">
+                    <span class="w-1.5 h-4 bg-stone-800 rounded-full inline-block"></span>
+                    學歷與專業證照 (Education & Licenses)
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
+                    <div class="bg-stone-100/70 p-3 rounded-xl border border-stone-200/60">
+                        <span class="font-semibold text-stone-800 block">🎓 國立清華大學</span>
+                        <span class="text-stone-600">運動科學 碩士</span>
+                    </div>
+                    <div class="bg-stone-100/70 p-3 rounded-xl border border-stone-200/60">
+                        <span class="font-semibold text-stone-800 block">🎓 實踐大學</span>
+                        <span class="text-stone-600">工業設計學系 學士</span>
+                    </div>
+                    <div class="bg-stone-100/70 p-3 rounded-xl border border-stone-200/60">
+                        <span class="font-semibold text-stone-800 block">🏔️ 國家考試合格</span>
+                        <span class="text-stone-600">華語導遊 / 領隊執照</span>
+                    </div>
+                    <div class="bg-stone-100/70 p-3 rounded-xl border border-stone-200/60">
+                        <span class="font-semibold text-stone-800 block">⚙️ 數位與 AI 工具</span>
+                        <span class="text-stone-600">HTML/CSS, Apps Script, Looker</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 生活興趣 -->
+            <section class="text-left mb-8">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="text-base sm:text-lg font-bold text-stone-800 flex items-center gap-2">
+                        <span class="w-1.5 h-4 bg-stone-800 rounded-full inline-block"></span>
+                        戶外與生活興趣 (Hover/Tap 懸停翻卡)
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <!-- 興趣卡 1: 高山登山 -->
+                    <div class="flip-card h-32 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner shadow-sm rounded-2xl">
+                            <!-- 正面 -->
+                            <div class="flip-card-front bg-stone-100/90 border border-stone-200/80 p-4 flex flex-col items-center justify-center">
+                                <span class="text-2xl mb-1">⛰️</span>
+                                <span class="font-bold text-stone-800 text-xs sm:text-sm">高山縱走與嚮導</span>
+                                <span class="text-[10px] text-stone-600 mt-1">翻轉查看照片 ➔</span>
+                            </div>
+                            <!-- 背面 -->
+                            <div class="flip-card-back bg-cover bg-center overflow-hidden flex items-end p-2 relative" 
+                                 style="background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?auto=format&fit=crop&w=400&q=80');">
+                                <div class="absolute inset-0 bg-black/40"></div>
+                                <span class="relative z-10 text-white font-bold text-xs mx-auto">台灣百岳縱走體驗</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 興趣卡 2: 登山車 -->
+                    <div class="flip-card h-32 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner shadow-sm rounded-2xl">
+                            <!-- 正面 -->
+                            <div class="flip-card-front bg-stone-100/90 border border-stone-200/80 p-4 flex flex-col items-center justify-center">
+                                <span class="text-2xl mb-1">🚵‍♀️</span>
+                                <span class="font-bold text-stone-800 text-xs sm:text-sm">登山車 (MTB) 騎行</span>
+                                <span class="text-[10px] text-stone-600 mt-1">翻轉查看照片 ➔</span>
+                            </div>
+                            <!-- 背面 -->
+                            <div class="flip-card-back bg-cover bg-center overflow-hidden flex items-end p-2 relative" 
+                                 style="background-image: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=400&q=80');">
+                                <div class="absolute inset-0 bg-black/40"></div>
+                                <span class="relative z-10 text-white font-bold text-xs mx-auto">越野騎行與裝備測試</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 興趣卡 3: 長途自主旅行 -->
+                    <div class="flip-card h-32 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner shadow-sm rounded-2xl">
+                            <!-- 正面 -->
+                            <div class="flip-card-front bg-stone-100/90 border border-stone-200/80 p-4 flex flex-col items-center justify-center">
+                                <span class="text-2xl mb-1">✈️</span>
+                                <span class="font-bold text-stone-800 text-xs sm:text-sm">長途自主旅行</span>
+                                <span class="text-[10px] text-stone-600 mt-1">翻轉查看照片 ➔</span>
+                            </div>
+                            <!-- 背面 -->
+                            <div class="flip-card-back bg-cover bg-center overflow-hidden flex items-end p-2 relative" 
+                                 style="background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=400&q=80');">
+                                <div class="absolute inset-0 bg-black/40"></div>
+                                <span class="relative z-10 text-white font-bold text-xs mx-auto">南美三個月橫跨探索</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 設計作品縮圖區塊 (精選作品 + 作品集按鈕連動) -->
+            <section class="text-left">
+                <div class="flex flex-wrap justify-between items-center gap-2 mb-4">
+                    <h2 class="text-base sm:text-lg font-bold text-stone-800 flex items-center gap-2">
+                        <span class="w-1.5 h-4 bg-stone-800 rounded-full inline-block"></span>
+                        精選作品預覽 (Featured Portfolio)
+                    </h2>
+                    <!-- 瀏覽作品集按鈕合併在此處 -->
+                    <a href="https://www.linkedin.com/in/913design/" target="_blank" class="btn-black text-xs font-medium px-4 py-2 rounded-full flex items-center gap-1.5 shadow-sm">
+                        <svg class="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
+                            <path d="M19 11H5m14 0l-7-7m7 7l-7 7"></path>
+                        </svg>
+                        瀏覽完整作品集
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <!-- 圖 1 -->
+                    <div class="group relative rounded-xl overflow-hidden aspect-video bg-stone-200 shadow-sm border border-stone-200/80">
+                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=500&q=80" 
+                             alt="Garmin 品牌視覺規範" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2">
+                            <span class="text-white text-[11px] font-medium">Garmin 品牌行銷與視覺</span>
+                        </div>
+                    </div>
+                    <!-- 圖 2 -->
+                    <div class="group relative rounded-xl overflow-hidden aspect-video bg-stone-200 shadow-sm border border-stone-200/80">
+                        <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=500&q=80" 
+                             alt="消費電子工業設計" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2">
+                            <span class="text-white text-[11px] font-medium">消費電子產品開發</span>
+                        </div>
+                    </div>
+                    <!-- 圖 3 -->
+                    <div class="group relative rounded-xl overflow-hidden aspect-video bg-stone-200 shadow-sm border border-stone-200/80">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=500&q=80" 
+                             alt="OEO Design 品牌包裝" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2">
+                            <span class="text-white text-[11px] font-medium">OEO 品牌包裝與展場</span>
+                        </div>
+                    </div>
+                    <!-- 圖 4 -->
+                    <div class="group relative rounded-xl overflow-hidden aspect-video bg-stone-200 shadow-sm border border-stone-200/80">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80" 
+                             alt="數位 AI 工具整合" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2">
+                            <span class="text-white text-[11px] font-medium">Trip Match 數位/AI流程</span>
+                        </div>
+                    </div>
+                    <!-- 圖 5 -->
+                    <div class="group relative rounded-xl overflow-hidden aspect-video bg-stone-200 shadow-sm border border-stone-200/80">
+                        <img src="https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=500&q=80" 
+                             alt="運動機能與裝備測試" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2">
+                            <span class="text-white text-[11px] font-medium">運動機能產品體驗</span>
+                        </div>
+                    </div>
+                    <!-- 圖 6 -->
+                    <div class="group relative rounded-xl overflow-hidden aspect-video bg-stone-200 shadow-sm border border-stone-200/80">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=500&q=80" 
+                             alt="團隊引導與遊程" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2">
+                            <span class="text-white text-[11px] font-medium">戶外嚮導與領導溝通</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+</body>
+</html>
